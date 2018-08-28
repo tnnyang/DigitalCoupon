@@ -1,0 +1,11 @@
+/* pages/mycard/mycard.wxss */
+page{background: #f0f0f0;}
+.title{width: 100%;height: 92rpx;background: #fff;padding: 0 48rpx;color: #333;font-size: 26rpx;line-height: 92rpx;margin-bottom: 26rpx;}
+.title_name{float: left;}
+.title_name image{width: 46rpx;height: 40rpx;margin-right: 18rpx;position: relative;top: 11rpx;}
+.title text{float: right;}
+.cardList .item{width: 719rpx;height: 238rpx;color: #c8c8c8;font-size: 20rpx;margin-left: 24rpx;padding: 152rpx 0 0 192rpx;position:relative}
+.item_grey .textDate{color: #a9a9a9;}
+.textState{font-size: 28rpx;color: #fff;line-height: 30rpx;width: 30rpx;display: block;position: absolute;top: 75rpx;right: 36rpx;}
+.item_grey .textState{color: #bbb;}
+.no_more_data{margin-top:150rpx;}

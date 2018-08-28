@@ -1,0 +1,4 @@
+{
+  "usingComponents": {
+    "dialog": "../../components/setNumber/dialog"
+  }}

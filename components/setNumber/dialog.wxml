@@ -1,0 +1,26 @@
+<!--components/Dialog/dialog.wxml-->
+<view hidden="{{isShow}}">
+  <view class="mask"></view>
+  <view class="set slideOutUp">
+    <view class="set_title">
+      设置数量（张）
+      <view catchtap="close" class="close"><image src="https://img.hurongclub.com/Upload/ryd/201808/23/201808232055079765.png"></image></view>
+    </view>
+    <view class="error_tips" hidden="{{isShowError}}">
+      <image src="https://img.hurongclub.com/Upload/ryd/201808/23/201808232103122824.png"></image>当前剩余礼券数量{{surplusNum}}张
+    </view>
+    <view class="error_tips" hidden="{{isShowZeroTips}}">
+      <image src="https://img.hurongclub.com/Upload/ryd/201808/23/201808232103122824.png"></image>卡券数量不能少于1张
+    </view>
+    <view class="number_group">
+      <button class="number_cell {{reduceGrey ? 'grey' : ''}}" catchtap="reduceNum" disabled="{{reduceNumDisabled}}" hover-class="none">-</button>
+      <input class="number_cell" type="number" value="{{setNumber}}" bindinput="setNumber"></input>
+      <button class="number_cell {{addGrey ? 'grey' : ''}}" catchtap="addNum" disabled="{{addNumDisabled}}" hover-class="none">+</button>
+    </view>
+    <view class="remarks">
+      <label>备注：</label>
+      <input placeholder="可输入部门或姓名，比如运营部A组" bindinput="remarks" value="{{remarks}}" maxlength="20"></input>
+    </view>
+    <button class="confirm" catchtap="confirm" hover-class="none">确定</button>
+  </view>
+</view>

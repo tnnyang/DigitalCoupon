@@ -1,0 +1,28 @@
+<!--pages/isssueRecord/record.wxml-->
+<block wx:if="{{isShowPage}}">
+  <view class="record" bindtap="share" wx:for="{{recordList}}" wx:for-index="idx" wx:key="{{idx}}" data-index="{{idx}}">
+    <view class="left"><image src="{{item.detail_img}}"></image></view>
+    <view class="middle">
+      <text class="nickname">{{item.user_nickname}}</text>
+      <text class="date">{{item.create_time}}</text>
+    </view>
+    <view class="right">
+      <text>{{item.num}}</text><label>张</label><image src="https://img.hurongclub.com/Upload/ryd/201808/23/201808232051595454.png"></image>
+    </view>
+  </view>
+  <view hidden="{{isShow}}">
+    <view class="mask"></view>
+    <view class="dialog">
+      <view class="share_dialog">
+        <view class="content">
+          <view class="avatar"><image src="{{dialogAvatar}}"></image></view>
+          <view class="name">{{dialogName}}</view>
+          <view class="qrcode"><image src="{{dialogQrCode}}"></image></view>
+          <view class="tips">该二维码包含{{dialogCardNum}}张礼券</view>
+          <view><button open-type="share" class="share_btn" hover-class="none">分享</button></view>
+        </view>      
+        <view class="close"><image src="https://img.hurongclub.com/Upload/ryd/201808/23/201808232052387197.png" catchtap="close"></image></view>
+      </view>
+    </view>
+  </view>
+</block>

@@ -1,0 +1,59 @@
+/* pages/cardDetails/details.wxss */
+page{background: #ff881e;}
+.cardDetails{width: 100%;height: 1120rpx;margin-top: 38rpx;padding: 70rpx 48rpx;}
+.title{font-size: 36rpx;color: #333;text-align: center;line-height: 50rpx;position: relative;}
+.title label{font-size: 24rpx;color: #ccc;display:block;}
+.title text{display: block;font-size: 26rpx;color: #ff481e;position: absolute;right: 0;top: 0;}
+.giftBox{width: 654rpx;height: 240rpx;margin: 40rpx auto;}
+.operation{margin-top: 100rpx;}
+.btnBox{text-align: center;display: flex;}
+.btnBox button{width: 169rpx;height: 74rpx;background:#fca628;border-radius: 4rpx;font-size: 24rpx;color: #fff;line-height: 74rpx;padding: 0;}
+.btnBox button.invalid{background: #c8c8c8;color: #666;}
+.btnBox button::after{border:1rpx solid #fca628;}
+.btnBox button.invalid::after{border:1rpx solid #c8c8c8;}
+.endWord,.tips{display: block;text-align: center;}
+.endWord{font-size: 30rpx;color: #333;margin-top: 30rpx;}
+.tips{font-size: 24rpx;color: #999;margin-top: 30rpx;}
+.tips .copyBtn{width: 80rpx;height: 44rpx;background: #bbb;border-radius: 10rpx;font-size: 20rpx;color: #fff;text-align: center;line-height: 44rpx;display: inline-block;margin-left: 16rpx;}
+.explain{font-size: 24rpx;color: #999;line-height: 44rpx;width: 616rpx;margin: 80rpx auto 0;}
+.explain label{width: 318rpx;height: 2rpx;background: #a9a9a9;display: block;margin: 20rpx auto 40rpx;position: relative;}
+.explain label text{width: 205rpx;height: 40rpx;font-size: 28rpx;color: #666;line-height: 40rpx;text-align: center;background: #fff;position: absolute;left: 0;right: 0;margin: auto;top: -20rpx;}
+/* 兑换实物 */
+.popupCon{width: 100%;background: #fff;position: absolute;left: 0;bottom: 0;z-index: 99;overflow: hidden;padding-top: 48rpx;}
+.popupCon_tit{font-size: 30rpx;color: #333;display: block;text-align: center;}
+.mailing{margin: 48rpx auto 0;}
+.mailing .inputBox{width: 702rpx;height: 94rpx;border-bottom: 1rpx solid #ddd;margin: 0 auto;overflow: hidden;}
+.mailing .inputBox:first-child{border-top: 1rpx solid #ddd;}
+.mailing label{width: 108rpx;font-size: 24rpx;color: #333;line-height: 94rpx;float: left;}
+.mailing input{width: 560rpx;height: 94rpx;line-height: 94rpx;color: #333;font-size: 28rpx;display: inline-block;margin-left: 12rpx;}
+.mailing .textareaBox{height: 164rpx;}
+/* .textareaBox label{line-height:164rpx;} */
+.textareaBox textarea{width: 570rpx;height: 164rpx;padding: 26rpx 0;line-height: 40rpx;color: #333;font-size: 28rpx;display: inline-block;margin-left: 12rpx;}
+.mailing .input-placeholder{font-size: 24rpx;color: #999;}
+.mailing .textarea-placeholder{font-size: 24rpx;color: #999;}
+.mailing .btn-area{font-size: 34rpx;text-align: center;overflow: hidden;display:flex;margin-top:84rpx;}
+.mailing .btn-area button{flex:1;border-radius: 0;height: 94rpx;line-height: 94rpx;font-size:34rpx;}
+.mailing button::after{border: 0;}
+.btn_think{background: #e3e3e3;color: #666;}
+.btn_confirm{background: #ff881e;color: #fff;}
+.close{position: absolute;top: 15rpx;right:0;width:114rpx;height:114rpx;display:flex;align-items:center;justify-content:center;}
+.close image{width: 28rpx;height: 28rpx;}
+/* 兑换实物成功 */
+.giftImg{width: 224rpx;height: 142rpx;margin: 40rpx auto 0;display: block;}
+.giftTit{display: block;text-align: center;font-size: 36rpx;color: #ff881e;margin: 58rpx 0 30rpx;}
+.giftText{display: block;text-align: center;font-size: 26rpx;color: #999;line-height: 40rpx;}
+.giftBtn{width: 100%;height: 94rpx;background: #ff881e;font-size: 34rpx;color: #fff;border-radius: 0;margin-top:130rpx;}
+/* 兑换现金 */
+.cashExchange{width: 516rpx;height:216rpx;margin: 128rpx auto 0;display:block;}
+.exchangeBtn{display:flex;margin-top:130rpx;}
+.exchangeBtn button{flex:1;border-radius: 0;height: 94rpx;line-height:94rpx;}
+.exchangeBtn button::after{border: 0;}
+.slideOutUp{animation:slideOutUp .5s forwards;}
+@-webkit-keyframes slideOutUp{
+  0%{-webkit-transform:translateY(800rpx);transform:translateY(800rpx);}
+	100%{-webkit-transform:translateY(0);transform:translateY(0);}
+}
+@keyframes slideOutUp{
+  0%{-webkit-transform:translateY(800rpx);transform:translateY(800rpx);}
+	100%{-webkit-transform:translateY(0);transform:translateY(0);}
+}

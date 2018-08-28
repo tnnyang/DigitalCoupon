@@ -1,0 +1,22 @@
+<!--pages/receive/receive.wxml-->
+<!-- <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button> -->
+<view class="container receive" style='background:url(https://img.hurongclub.com/Upload/ryd/201808/25/201808251733213495.jpeg) no-repeat left top / 750rpx 1206rpx;height:1206rpx;'>
+  <view class='btnBox'>
+    <button hover-class="none" bindtap="getCard" wx:if="{{notGet}}">领取心意</button>
+    <button hover-class="none" bindtap="changeCard" wx:if="{{alreadyGet}}">兑换礼券</button>
+    <view class="success_tips" hidden="{{isShowSuccess}}">{{getTips}}</view>
+  </view>
+  <!-- 领取失败 -->
+  <view class="popup" hidden="{{isShowModel}}">
+    <view class="mask"></view>
+    <view class="popupCon">      
+      <image class="failSad" src="https://img.hurongclub.com/Upload/ryd/201808/23/201808232104169638.png"></image>            
+      <text class="failTit">领取失败</text>
+      <text class="failReason">呜呜~{{failTips}}</text>
+      <button catchtap="close" hover-class="none">确定</button>
+      <view catchtap="close" class="close">
+        <image src="https://img.hurongclub.com/Upload/ryd/201808/23/201808232055079765.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

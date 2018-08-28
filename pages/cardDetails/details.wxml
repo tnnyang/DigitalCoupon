@@ -1,0 +1,121 @@
+<!--pages/cardDetails/details.wxml-->
+<view class="container" wx:if="{{isShowPage}}">
+  <view class="cardDetails" style="background:url(https://img.hurongclub.com/Upload/ryd/201808/23/201808232059093715.png) no-repeat left top / 100% 1120rpx;">
+    <view class="title">
+      <view class="title_center">杏花楼数字礼券<label>有效期至：{{date}}</label></view>
+      <block wx:if="{{cardDetail.takeStatus == -1}}">
+        <text class="title_state">已过期</text>
+      </block>
+      <block wx:if="{{cardDetail.takeStatus == 2 || cardDetail.takeStatus == 5}}">
+        <text class="title_state">已兑换</text>
+      </block>
+      <block wx:if="{{cardDetail.takeStatus == 3}}">
+        <text class="title_state">已转赠</text>
+      </block>
+    </view>
+    <view class="giftBox"  style="background:url(https://img.hurongclub.com/Upload/ryd/201808/23/201808232107302408.jpeg) no-repeat left top / 100% 240rpx;">
+    </view>
+    <view class="operation">
+      <view class="btnBox" wx:if="{{cardDetail.takeStatus == 1 || cardDetail.takeStatus == 4}}">
+        <button bindtap="choiceGift">兑换实物</button>
+        <button bindtap="choiceFriend">赠送好友</button>
+        <button bindtap="choiceCash">兑换68元现金</button>
+      </view>
+      <view class="btnBox" wx:if="{{cardDetail.takeStatus == -1}}">
+        <button class="invalid" disabled>兑换实物</button>
+        <button class="invalid" disabled>赠送好友</button>
+        <button class="invalid" disabled>兑换68元现金</button>
+      </view>
+      <block wx:if="{{cardDetail.takeStatus == 2}}">
+        <label class="endWord">已申请兑换实物礼品，等待收货中</label>
+        <label class="tips" wx:if="{{cardDetail.emsNo}}">订单号：{{cardDetail.emsNo}} <label class="copyBtn" bindtap="copy">复制</label></label>
+      </block>
+      <block wx:if="{{cardDetail.takeStatus == 5}}">
+        <label class="endWord">已申请兑换现金，请查看微信红包</label>
+        <label class="tips">处理中</label>
+      </block>
+      <block wx:if="{{cardDetail.takeStatus == 3}}">
+        <label class="endWord">已转赠给好友</label>
+        <label class="tips">处理中</label>
+      </block> 
+      <view class="explain"> 
+        <label><text>卡券使用说明</text></label>
+        {{cardDetail.remark}}
+      </view>
+    </view>
+  </view>
+  <!-- 兑换实物 -->
+  <view class="popup" hidden="{{isShowAddress}}">
+    <view class="mask"></view>
+    <view class="popupCon">
+      <text class="popupCon_tit">杏花楼数字礼券</text>
+      <view class="mailing">
+        <view class="inputBox">
+          <label>收货人</label>
+          <input type="text" placeholder="名字" value="{{emsName}}" bindinput="setName" />
+        </view>
+        <view class="inputBox">
+          <label>手机号码</label>
+          <input type="tel" placeholder="手机号码" value="{{emsPhone}}" bindinput="setTel" maxlength="11" />
+        </view>
+        <view class="inputBox textareaBox">
+          <label>收货地址</label>
+          <textarea placeholder="请输入详细的地址信息，省份、街道、门牌号、小区、楼栋号、单元室等" value="{{emsAddress}}" bindinput="setAddress" />
+        </view>
+        <view class="btn-area">
+          <button class="btn_think" catchtap="closeAddress" hover-class="none">再想想</button>
+          <button class="btn_confirm" hover-class="none" catchtap="confirmChange">确定兑换</button>
+        </view>
+      </view>
+      <view class="close" catchtap="closeAddress"><image src="https://img.hurongclub.com/Upload/ryd/201808/23/201808232055079765.png"></image></view>
+    </view>
+  </view> 
+  <!-- 兑换实物成功 -->
+  <view class="popup" hidden="{{realChangeSuccess}}">
+    <view class="mask"></view>
+    <view class="popupCon">
+      <image class="giftImg" src="https://img.hurongclub.com/Upload/ryd/201808/23/201808232100151367.png"></image>
+      <text class="giftTit">恭喜兑换成功</text>
+      <text class="giftText">礼品将在3个工作日内寄出，工作人员会在\n稍后与您核对信息</text>
+      <button class="giftBtn" hover-class="none" catchtap="closeRealChangeSuccess">确定</button>
+      <view class="close" catchtap="closeRealChangeSuccess"><image src="https://img.hurongclub.com/Upload/ryd/201808/23/201808232055079765.png"></image></view>
+    </view> 
+  </view>
+  <!-- 兑换现金 -->
+  <view class="popup" hidden="{{changeCash}}">
+    <view class="mask"></view>
+    <view class="popupCon">
+      <image class="cashExchange" src="https://img.hurongclub.com/Upload/ryd/201808/23/201808232100454377.png"></image>
+      <view class="exchangeBtn">
+        <button class="btn_think" hover-class="none" catchtap="closeChangeCash">取消</button>
+        <button class="btn_confirm" hover-class="none" catchtap="confirmChangeCash">确认兑换</button>
+      </view>
+      <view class="close" catchtap="closeChangeCash"><image src="https://img.hurongclub.com/Upload/ryd/201808/23/201808232055079765.png"></image></view>
+    </view> 
+  </view>
+  <!-- 兑换现金成功 -->
+  <view class="popup" hidden="{{changeCashSuccess}}">
+    <view class="mask"></view>
+    <view class="popupCon">
+      <image class="giftImg" src="https://img.hurongclub.com/Upload/ryd/201808/23/201808232101038277.png"></image>
+      <text class="giftTit">成功兑换68元</text>
+      <text class="giftText">68元稍后将以微信红包的方式发放至您的微信账户\n请注意查收</text>
+      <button class="giftBtn" hover-class="none" catchtap="closeRealChangeSuccess">确定</button>
+      <view class="close" catchtap="closeRealChangeSuccess"><image src="https://img.hurongclub.com/Upload/ryd/201808/23/201808232055079765.png"></image></view>
+    </view> 
+  </view>
+  <!-- 转赠券 -->
+  <view class="popup" hidden="{{shareCard}}">
+    <view class="mask"></view>
+    <view class="popupCon">
+      <image class="giftImg" src="https://img.hurongclub.com/Upload/ryd/201808/23/201808232101280283.png"></image>
+      <text class="giftTit">确定将该礼券转赠给好友吗?</text>
+      <text class="giftText">记得提醒好友尽快收礼哦～\n以免卡券过期失效</text>
+      <view class="exchangeBtn">
+        <button class="btn_think" hover-class="none" catchtap="closeShareCard">再想想</button>
+        <button class="btn_confirm" hover-class="none" open-type="share" catchtap="confirmShareCard">确认转赠</button>
+      </view>
+      <view class="close" catchtap="closeShareCard"><image src="https://img.hurongclub.com/Upload/ryd/201808/23/201808232055079765.png"></image></view>
+    </view> 
+  </view>
+</view>

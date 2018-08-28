@@ -1,0 +1,47 @@
+<!--pages/manage/manage.wxml-->
+<block wx:if="{{isShowPage}}">
+  <swiper circular="{{circular}}" wx:if="{{isShowPage}}" bindchange="swiperChange">
+    <block wx:for="{{cardList}}" wx:for-index="idx" wx:key="idx">
+      <swiper-item class="swiper_item">
+        <view class="swiper_content">
+          <view class="title">{{item.name}}</view>
+          <view class="tips">微信扫一扫，面对面发券</view>
+          <view class="qrcode" bindtap="showSetNum" data-index="{{idx}}" data-surplusNum="{{item.surplusNum}}"><image src="{{item.qrCodeSrc ? item.qrCodeSrc: 'https://img.hurongclub.com/Upload/ryd/201808/24/201808241059300809.jpeg'}}" style="height:{{item.qrCodeSrc ? '353rpx': '310rpx'}}"></image></view>          
+          <view class="card_num">{{item.cardNum}}</view>
+          <view class="name">{{item.remarks}}</view>
+          <view class="share">
+            <text catchtap="showSetNum" data-index="{{idx}}" data-surplusNum="{{item.surplusNum}}">设置数量</text>
+            <button open-type="share" hover-class="none" wx:if="{{item.cardNum}}" data-index="{{idx}}">分享给好友</button>
+            <button hover-class="none" catchtap="showSetNum" data-index="{{idx}}" data-surplusNum="{{item.surplusNum}}" wx:if="{{!item.cardNum}}">分享给好友</button>
+          </view>
+          <navigator url="/pages/isssueRecord/record?actId={{item.actId}}" class="record" hover-class="none"><image src="https://img.hurongclub.com/Upload/ryd/201808/23/201808232051302972.png" class="record_img"></image>发放记录<image src="https://img.hurongclub.com/Upload/ryd/201808/23/201808232050294582.png" class="record_arrow"></image></navigator>
+        </view>
+        <view class="swiper_content surplus">
+          <view>
+            <view class="surplus_num">{{item.surplusNum}}</view>
+            <view>剩余礼券(张)</view>
+          </view>
+          <view>
+            <view class="surplus_num">{{item.issue}}</view>
+            <view>已发放(张)</view>
+          </view>
+          <view>
+            <view class="surplus_num">{{item.receive}}</view>
+            <view>已领取(张)</view>
+          </view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</block>
+<dialog id="dialog" bind:confirm="confirm"></dialog>
+<input type="text" value="{{swiperIndex}}" hidden="true"></input>
+<block wx:if="{{isShowTips}}">
+  <view class="mask"></view>
+  <view class="dialog_tips">  
+    <view class="tips_content">
+      <view class="tips_title">温馨提示</view>
+      <view class="tips_desc">该HR没有卡券</view>
+    </view>
+  </view>
+</block>

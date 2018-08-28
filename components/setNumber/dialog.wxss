@@ -1,0 +1,30 @@
+/* components/Dialog/dialog.wxss */
+.mask{position:fixed;left:0;top:0;z-index:1;width:100%;height:100%;background:rgba(0, 0, 0, .4)}
+.set{background:#fff;position:fixed;left:0;bottom:0;width:100%;z-index:100;text-align:center;}
+.set_title{border-bottom:2rpx solid #eee;font-size:30rpx;height:114rpx;line-height:114rpx;position:relative;}
+.close{position:absolute;top:0;right:0;width:114rpx;height:114rpx;display:flex;align-items:center;justify-content:center;}
+.set_title image{width:26rpx;height:26rpx;}
+.error_tips{font-size:20rpx;color:#f04949;position:absolute;left:0;top:138rpx;width:100%;}
+.error_tips image{width:20rpx;height:20rpx;position:relative;top:4rpx;right:10rpx;}
+.number_group{display:-webkit-box;-webkit-box-pack:center;-webkit-box-align:center;text-align:center;margin:86rpx 0 46rpx;}
+.number_cell{display:inline-block;height:90rpx;line-height:90rpx;color:#666;}
+input.number_cell{width:272rpx;border:2rpx solid #bbb;margin:0 20rpx;font-size:72rpx;}
+.number_group button{background:none;width:110rpx;border-radius:0;font-size:72rpx;line-height:80rpx;}
+.number_group button::after{border:6rpx solid #bbb;border-radius:0;}
+.number_group button.grey{color:#ddd;}
+.number_group button.grey::after{border:6rpx solid #ddd;}
+.remarks{display:flex;border:2rpx solid #bbb;width:614rpx;margin:0 auto 78rpx;font-size:24rpx;padding:0 20rpx;height:90rpx;line-height:90rpx;}
+.remarks label{color:#666;}
+.remarks input{flex:1;height:90rpx;line-height:90rpx;padding-left:10rpx;text-align:left;color:#666;}
+.remarks .input-placeholder{color:#999;}
+.confirm{height:94rpx;line-height:94rpx;background:#ff881e;color:#fff;font-size:35rpx;border-radius:0;}
+.confirm::after{border:none;}
+.slideOutUp{animation:slideOutUp .5s forwards;}
+@-webkit-keyframes slideOutUp{
+  0%{-webkit-transform:translateY(800rpx);transform:translateY(800rpx);}
+	100%{-webkit-transform:translateY(0);transform:translateY(0);}
+}
+@keyframes slideOutUp{
+  0%{-webkit-transform:translateY(800rpx);transform:translateY(800rpx);}
+	100%{-webkit-transform:translateY(0);transform:translateY(0);}
+}

@@ -1,0 +1,21 @@
+<!--pages/mycard/mycard.wxml-->
+<view class="container" wx:if="{{isShowPage}}">
+  <view class="title">
+      <view class="title_name"><image src='https://img.hurongclub.com/Upload/ryd/201808/23/201808232056357796.png'></image>我的卡券</view>
+      <text>共{{total}}张卡券</text>
+  </view>
+  <view class="cardList">
+    <block wx:for="{{cardList}}" wx:for-index="idx" wx:key="idx">     
+        <navigator class="item exchangeNo {{item.takeStatus == -1 ? 'item_grey' : ''}}" url="/pages/cardDetails/details?id={{item.id}}" style="background:url({{item.takeStatus == -1 ? item.list_img_past : item.list_img}}) no-repeat left top / 100% 238rpx;" hover-class="none">
+          <text class="textDate">有效期：{{item.begin_time}}至{{item.end_time}}</text>
+          <label class="textState">
+            <block wx:if="{{item.takeStatus == -1}}">已过期</block>
+            <block wx:if="{{item.takeStatus == 1}}">可兑换</block>
+            <block wx:if="{{item.takeStatus == 2}}">已兑换</block>
+            <block wx:if="{{item.takeStatus == 3}}">已转赠</block>
+          </label>
+        </navigator>
+    </block>
+  </view>
+  <view class="no_more_data" hidden="{{isShowMoreData}}">暂无数据</view>
+</view>
